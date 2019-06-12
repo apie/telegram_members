@@ -37,9 +37,11 @@ def main(channel):
       raise Exception('Not a channel')
   if save_in_db(channel, nr):
       print('%s: %s' % (channel, nr))
+      return True
 
 if __name__ == '__main__':
     if len(sys.argv) != 2:
         raise Exception('Provide name of the channel')
-    main(sys.argv[1])
+    if not main(sys.argv[1]):
+        sys.exit(1)
 
