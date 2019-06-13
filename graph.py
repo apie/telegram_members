@@ -26,7 +26,8 @@ def write_graph(channel):
     ax.xaxis.set_minor_locator(mdates.DayLocator())
     ax.set_xlabel('Date')
     ax.set_ylabel('Members')
-    ax.set_title('Number of members for {}'.format(channel))
+    fig.suptitle('Number of members for {} over time'.format(channel), fontsize=15)
+    ax.set_title('Currently: {}'.format(y[-1]))
     plt.xticks(rotation=45)
     fig.savefig('{}.png'.format(channel))
 
