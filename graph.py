@@ -5,6 +5,7 @@ import sys
 import datetime as dt
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
+from matplotlib.ticker import MaxNLocator
 
 from pydblite import Base
 SCRIPT_DIR = os.path.dirname(os.path.realpath(__file__))
@@ -18,7 +19,8 @@ def write_graph(channel):
     fig = plt.figure()
     fig.autofmt_xdate()
     ax = fig.add_subplot(111)
-    p = ax.bar(list(x)[-10:], list(y)[-10:])
+    p = ax.plot(x, y, 'b')
+    ax.yaxis.set_major_locator(MaxNLocator(integer=True))
     ax.xaxis.set_major_formatter(mdates.DateFormatter('%m-%Y'))
     ax.xaxis.set_major_locator(mdates.MonthLocator())
     ax.xaxis.set_minor_locator(mdates.DayLocator())
