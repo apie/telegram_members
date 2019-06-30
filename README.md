@@ -1,2 +1,2 @@
 # telegram_members
-Fetch number of subscribers for a channel. If it has changed: save in db and print to stdout.
+Fetch number of subscribers for a channel and save in a db. Also included is a script to plot the number of members over time.
