@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Fetch number of subscribers for a channel. If it has changed: save in db and print to stdout.
+# Fetch number of subscribers for a channel. Save in db an compare to previous number. If it has changed: return exit code 1.
 
 import requests
 import datetime
@@ -36,7 +36,7 @@ def main(channel):
   if 'members' not in nr:
       raise Exception('Not a channel')
   if save_in_db(channel, nr):
-      print('%s: %s' % (channel, nr))
+      #print('%s: %s' % (channel, nr))
       return True
 
 if __name__ == '__main__':
