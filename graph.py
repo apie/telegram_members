@@ -29,7 +29,7 @@ def write_graph(channel):
     fig.suptitle('Number of members for {} over time'.format(channel), fontsize=15)
     ax.set_title('Currently: {}'.format(y[-1]))
     plt.xticks(rotation=45)
-    fig.savefig('{}.png'.format(channel))
+    fig.savefig(os.path.join(SCRIPT_DIR, '{}.png'.format(channel)))
 
 def main(channel):
     write_graph(channel)
