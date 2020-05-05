@@ -28,6 +28,7 @@ def write_graph(channel):
     ax.set_ylabel('Members')
     fig.suptitle('Number of members for {} over time'.format(channel), fontsize=15)
     ax.set_title('Currently: {}'.format(y[-1]))
+    print(y[-1])
     plt.xticks(rotation=45)
     fig.savefig(os.path.join(SCRIPT_DIR, '{}.png'.format(channel)))
 
