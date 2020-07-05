@@ -6,10 +6,10 @@ from pydblite import Base
 SCRIPT_DIR = os.path.dirname(os.path.realpath(__file__))
 
 def dolist(channel):
-    db = Base(os.path.join(SCRIPT_DIR, '%s_members.db' % channel))
+    db = Base(os.path.join(SCRIPT_DIR, f'{channel}_members.db'))
     db.open()
     for l in db:
-        print('%s %s' % (l['members'], l['time']))
+        print(f"{l['members']} {l['time']}")
 
 def main(channel):
     dolist(channel)
