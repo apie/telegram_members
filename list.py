@@ -8,7 +8,7 @@ SCRIPT_DIR = os.path.dirname(os.path.realpath(__file__))
 def dolist(channel):
     db = Base(os.path.join(SCRIPT_DIR, f'{channel}_members.db'))
     db.open()
-    for l in db:
+    for l in sorted(db, key=lambda x: x['time']):
         print(f"{l['members']} {l['time']}")
 
 def main(channel):

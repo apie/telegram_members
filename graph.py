@@ -13,7 +13,7 @@ SCRIPT_DIR = os.path.dirname(os.path.realpath(__file__))
 def write_graph(channel):
     db = Base(os.path.join(SCRIPT_DIR, f'{channel}_members.db'))
     db.open()
-    member_data = ((int(l['members'].split()[0]), l['time'].date()) for l in db)
+    member_data = ((int(l['members'].split()[0]), l['time'].date()) for l in sorted(db, key=lambda x: x['time']))
     # Split the list of combinations in two lists, one for the y values and one for the x values
     y, x = list(zip(*member_data))
     fig = plt.figure()
