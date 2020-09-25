@@ -29,7 +29,7 @@ def write_graph(channel):
     fig.suptitle(f'Number of members for {channel} over time', fontsize=15)
     ax.set_title(f'Maximum: {max(y)}. Currently: {y[-1]}')
     ax.set_ylim(bottom=0)
-    print(y[-1])
+    print(y[-1])  # Print latest value to stdout
     plt.xticks(rotation=45)
     fig.savefig(os.path.join(SCRIPT_DIR, f'{channel}.png'))
 
