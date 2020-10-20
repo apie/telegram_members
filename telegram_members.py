@@ -35,8 +35,7 @@ def main(channel):
   nr = fetch_number_of_subscribers(channel)
   if 'members' not in nr:
       raise Exception('Not a channel')
-  if save_in_db(channel, nr):
-      return True
+  return save_in_db(channel, nr)
 
 if __name__ == '__main__':
     if len(sys.argv) != 2:

@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# List db contents. Provide channel name as argument.
 
 import os
 import sys
