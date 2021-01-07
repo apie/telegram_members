@@ -10,22 +10,19 @@ from pydblite import Base
 
 from telegram_members import save_in_db
 
-STATUS_PAGE_BASE = 'https://www.instagram.com/'
+STATUS_PAGE_BASE = 'https://bibliogram.pussthecat.org/u/'
 
 def fetch_number_of_followers(account: str) -> str:
   page = requests.get(STATUS_PAGE_BASE+account, timeout=8).text
   doc = html.fromstring(page)
   try:
-      #  ['61 Followers, 13 Following, 3 Posts - See Instagram photos and videos from foo']
-      meta_description = doc.xpath('/html/head/meta[@name="description"]/@content')[0]
+      followed_by = doc.xpath('//div[@class="profile-counter"][text()="followed by"]/span/text()')[0]
   except IndexError:
       raise Exception('Not an account')
-  return meta_description.split(',')[0].lower()
+  return followed_by.strip()+' followers'
 
 def main(account):
   nr = fetch_number_of_followers(account)
-  if 'followers' not in nr:
-      raise Exception('Not an account')
   return save_in_db(account, nr)
 
 if __name__ == '__main__':
