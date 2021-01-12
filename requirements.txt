@@ -9,7 +9,7 @@ chardet==3.0.4            # via requests
 cycler==0.10.0            # via matplotlib
 idna==2.10                # via requests
 kiwisolver==1.2.0         # via matplotlib
-lxml==4.6.1               # via -r requirements.in
+lxml==4.6.2               # via -r requirements.in
 matplotlib==3.3.2         # via -r requirements.in
 numpy==1.19.2             # via matplotlib
 pillow==8.0.0             # via matplotlib
