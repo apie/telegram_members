@@ -5,6 +5,7 @@ import requests
 import datetime
 import os
 import sys
+import re
 from lxml import html
 from pydblite import Base
 
@@ -29,12 +30,14 @@ def fetch_number_of_subscribers(channel):
       div = doc.xpath("//div[@class='tgme_page_extra']")[0]
   except IndexError:
       raise Exception('Not a channel')
-  return div.text_content()
+  nr = div.text_content()
+  if 'members' not in nr:
+      raise Exception('Not a channel')
+  #Clean spaces within the number: 1 084 members -> 1084 members
+  return re.sub(r' (\d)',r'\1', nr)
 
 def main(channel):
   nr = fetch_number_of_subscribers(channel)
-  if 'members' not in nr:
-      raise Exception('Not a channel')
   return save_in_db(channel, nr)
 
 if __name__ == '__main__':
