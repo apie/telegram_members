@@ -10,13 +10,13 @@ from pydblite import Base
 
 from telegram_members import save_in_db
 
-STATUS_PAGE_BASE = 'https://bibliogram.pussthecat.org/u/'
+STATUS_PAGE_BASE = 'https://bibliogram.snopyta.org/u/'
 
 def fetch_number_of_followers(account: str) -> str:
   page = requests.get(STATUS_PAGE_BASE+account, timeout=8).text
   doc = html.fromstring(page)
   try:
-      followed_by = doc.xpath('//div[@class="profile-counter"][text()="followed by"]/span/text()')[0]
+      followed_by = doc.xpath('//div[@class="profile-counter"][text()="Followed by"]/span/text()')[0]
   except IndexError:
       raise Exception('Not an account')
   return followed_by.strip()+' followers'
