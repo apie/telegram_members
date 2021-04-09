@@ -31,7 +31,7 @@ def fetch_number_of_subscribers(channel):
   except IndexError:
       raise Exception('Not a channel')
   member_str = div.text_content()
-  if 'members' not in member_str:
+  if 'subscribers' not in member_str:
       raise Exception('Not a channel')
   #Groups also give info about online members. Remove it: 30 members, 4 online -> 30 members
   nr = member_str.split(',')[0]
