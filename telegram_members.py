@@ -29,10 +29,12 @@ def fetch_number_of_subscribers(channel):
   try:
       div = doc.xpath("//div[@class='tgme_page_extra']")[0]
   except IndexError:
-      raise Exception('Not a channel')
+      raise Exception('Not a group/channel')
   member_str = div.text_content()
-  if 'subscribers' not in member_str:
-      raise Exception('Not a channel')
+  #members = group
+  #subscribers = channel
+  if 'members' not in member_str and 'subscribers' not in member_str:
+      raise Exception('Not a group/channel')
   #Groups also give info about online members. Remove it: 30 members, 4 online -> 30 members
   nr = member_str.split(',')[0]
   #Clean spaces within the number: 1 084 members -> 1084 members
