@@ -10,7 +10,7 @@ def dolist(channel):
     db = Base(os.path.join(SCRIPT_DIR, f'{channel}_members.db'))
     db.open()
     for l in sorted(db, key=lambda x: x['time']):
-        print(f"{l['members']} {l['time']}")
+        print(f"{l['members']} {str(l['time']).split('.')[0]}")
 
 def main(channel):
     dolist(channel)
