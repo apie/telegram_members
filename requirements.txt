@@ -20,7 +20,7 @@ matplotlib==3.4.1
     # via -r requirements.in
 numpy==1.20.2
     # via matplotlib
-pillow==8.2.0
+pillow==8.3.2
     # via matplotlib
 pydblite==3.0.4
     # via -r requirements.in
