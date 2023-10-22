@@ -12,7 +12,10 @@ SCRIPT_DIR = os.path.dirname(os.path.realpath(__file__))
 def save_in_db(channel, count, date):
     db = Base(os.path.join(SCRIPT_DIR, f'{channel}_members.db'))
     db.create('members', 'time', mode="open")
-    variant = db[0]['members'].split()[1]
+    try:
+        variant = db[0]['members'].split()[1]
+    except KeyError:
+        variant = 'subscribers'
     value = f"{count} {variant}"
     already_present = [r for r in db if r['members'] == value]
     if not already_present:
