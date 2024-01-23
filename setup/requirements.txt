@@ -28,7 +28,7 @@ numpy==1.24.2
     #   matplotlib
 packaging==23.0
     # via matplotlib
-pillow==9.4.0
+pillow==10.2.0
     # via matplotlib
 pydblite==3.0.4
     # via -r requirements.in
